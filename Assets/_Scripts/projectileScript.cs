@@ -9,7 +9,7 @@ public class projectileScript : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-
+       
         clockHandPlayer = GameObject.Find("clockHandPlayer");
         shootDirection = new Vector3(Mathf.Cos(Mathf.Deg2Rad*clockHandPlayer.transform.localEulerAngles.z), 
                                    Mathf.Sin(Mathf.Deg2Rad * clockHandPlayer.transform.localEulerAngles.z), 
@@ -19,14 +19,17 @@ public class projectileScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log(clockHandPlayer.transform.localRotation.z);
+//Debug.Log(clockHandPlayer.transform.localRotation.z);
         transform.position += projectileSpeed*Time.deltaTime*shootDirection;
 
        
 	}
 
-    void OnColliderEntry2D()
+    void OnCollisionEnter2D(Collision2D enemy)
     {
+        Debug.Log("collide!");
         gameObject.SetActive(false);
+        if(enemy.gameObject.CompareTag("enemy"))
+        enemy.gameObject.SetActive(false);
     }
 }
