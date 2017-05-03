@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class projectileScript : MonoBehaviour {
     public float projectileSpeed=1;
-    public GameObject clockHandPlayer;
+   GameObject clockHandPlayer;
     public Vector3 shootDirection;
+    
 	// Use this for initialization
 	void Start () {
+
+        clockHandPlayer = GameObject.Find("clockHandPlayer");
         shootDirection = new Vector3(Mathf.Cos(Mathf.Deg2Rad*clockHandPlayer.transform.localEulerAngles.z), 
                                    Mathf.Sin(Mathf.Deg2Rad * clockHandPlayer.transform.localEulerAngles.z), 
                                                                                                         0);
@@ -18,5 +21,12 @@ public class projectileScript : MonoBehaviour {
 
         Debug.Log(clockHandPlayer.transform.localRotation.z);
         transform.position += projectileSpeed*Time.deltaTime*shootDirection;
+
+       
 	}
+
+    void OnColliderEntry2D()
+    {
+        gameObject.SetActive(false);
+    }
 }
