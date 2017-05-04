@@ -22,13 +22,9 @@ public class projectileScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-
-
-        
+    void Update () {        
         transform.position += projectileSpeed*Time.deltaTime*shootDirection;
 
-       
 	}
 
     void OnCollisionEnter2D(Collision2D enemy)
