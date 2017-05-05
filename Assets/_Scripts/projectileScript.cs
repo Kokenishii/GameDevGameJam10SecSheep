@@ -5,6 +5,7 @@ using UnityEngine;
 public class projectileScript : MonoBehaviour {
     public float projectileSpeed=1;
    GameObject clockHandPlayer;
+    public GameObject targetParticle;
     public Vector3 shootDirection;
     
 	// Use this for initialization
@@ -29,9 +30,18 @@ public class projectileScript : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D enemy)
     {
-        
-        gameObject.SetActive(false);
-        if(enemy.gameObject.CompareTag("enemy"))
-        enemy.gameObject.SetActive(false);
+        GameObject targetClear = Instantiate(targetParticle) as GameObject;
+        targetClear.transform.localPosition =transform.localPosition;
+
+        targetClear.transform.localEulerAngles = new Vector3(-transform.localEulerAngles.z, 90, 0);
+       
+        if (enemy.gameObject.CompareTag("enemy"))
+        {
+            
+            gameObject.SetActive(false);
+            enemy.gameObject.SetActive(false);
+        }
     }
+   
+
 }
