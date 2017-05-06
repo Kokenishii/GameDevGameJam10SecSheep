@@ -9,6 +9,8 @@ public class projectileScript : MonoBehaviour {
     public Vector3 shootDirection;
     public float initialV = 1f;
         public float continueV = 10f;
+   // public GameObject background;
+   // public Color setColor;
 	// Use this for initialization
 	void Start () {
        
@@ -19,8 +21,8 @@ public class projectileScript : MonoBehaviour {
       
 
         transform.localEulerAngles = new Vector3(0,0,clockHandPlayer.transform.localEulerAngles.z);
-   
 
+      
     }
 
     // Update is called once per frame
@@ -29,9 +31,9 @@ public class projectileScript : MonoBehaviour {
         Rigidbody2D bullet = gameObject.GetComponent<Rigidbody2D>();
         bullet.AddForce(shootDirection * initialV, ForceMode2D.Impulse);
         bullet.AddForce(shootDirection*continueV, ForceMode2D.Force);
-        
+        clockHandPlayer.GetComponent<rotateControl>().canMove = false;
 
-	}
+    }
 
     void OnCollisionEnter2D(Collision2D enemy)
     {
@@ -43,7 +45,7 @@ public class projectileScript : MonoBehaviour {
      gameObject.SetActive(false);
         if (enemy.gameObject.CompareTag("enemy"))
         {
-           
+          //  background.GetComponent<SpriteRenderer>().color = setColor;
             gameObject.SetActive(false);
             enemy.gameObject.SetActive(false);
         }

@@ -19,7 +19,7 @@ public class rotateControl : MonoBehaviour {
             leftRight = -Input.GetAxis("Horizontal");
             transform.Rotate(new Vector3(0, 0, leftRight * moveConstant));
         }
-   
+
         //transform.Rotate(new Vector3(0,0,leftRight*moveConstant));
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -30,7 +30,14 @@ public class rotateControl : MonoBehaviour {
         }
         else
         {
-           
+            if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false)
+            {
+                canMove = false;
+            }
+            else
+            {
+               canMove = true;
+            }
         }
       
 
