@@ -19,10 +19,12 @@ public class randomSpawningScript : MonoBehaviour {
 	public int NUM_TO_SPAWN_perQ = 0;
 
 	GameObject countDown;
+	GameObject roundsText;
 
 //	int numKilled;
 	// Use this for initialization
 	void Start () {
+		roundsText = GameObject.Find ("roundsText");
 		countDown = GameObject.Find ("timerGameOver");
 
 		numKilled = 0;
@@ -50,6 +52,7 @@ public class randomSpawningScript : MonoBehaviour {
 		Debug.Log (numSpawned);
 		if (numKilled == numSpawned) {
 			countDown.GetComponent<countDown> ().time = 10f;
+			roundsText.GetComponent<roundsScript> ().roundsCompleted += 1;
 			NUM_TO_SPAWN_perQ += 1;
 
 			numKilled = 0;
