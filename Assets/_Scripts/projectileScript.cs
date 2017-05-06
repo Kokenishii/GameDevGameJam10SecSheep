@@ -8,7 +8,8 @@ public class projectileScript : MonoBehaviour {
     public GameObject targetParticle;
     public Vector3 shootDirection;
     public float initialV = 1f;
-        public float continueV = 10f;
+    public float continueV = 10f;
+
    // public GameObject background;
    // public Color setColor;
 	// Use this for initialization
@@ -48,6 +49,8 @@ public class projectileScript : MonoBehaviour {
           //  background.GetComponent<SpriteRenderer>().color = setColor;
             gameObject.SetActive(false);
             enemy.gameObject.SetActive(false);
+
+			GameObject.Find("RandomGenerateShit").GetComponent<randomSpawningScript>().numKilled += 1;
         }
     }
    

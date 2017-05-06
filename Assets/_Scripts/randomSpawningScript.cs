@@ -12,8 +12,14 @@ public class randomSpawningScript : MonoBehaviour {
 	List<GameObject> spawnedObjectsQ3;
 	List<GameObject> spawnedObjectsQ4;
 
+	float time = 10f;
+	public int numSpawned;
+	public int numKilled;
+//	int numKilled;
 	// Use this for initialization
-	void Start () {	
+	void Start () {
+		numKilled = 0;
+		numSpawned = 0;
 		spawnedObjectsQ1 = new List<GameObject>();
 		spawnedObjectsQ2 = new List<GameObject>();
 		spawnedObjectsQ3 = new List<GameObject>();
@@ -27,9 +33,20 @@ public class randomSpawningScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timer++;
-		if (timer == 50) {
-			timer = 0;
+//		int numKilled = GameObject.Find
+//		time -= Time.deltaTime;
+//		if (time <= 0) {
+//			time = 10f;
+		Debug.Log(numKilled);
+		Debug.Log (numSpawned);
+		if (numKilled == numSpawned) {
+
+			numKilled = 0;
+			numSpawned = 0;
+			spawnedObjectsQ1.Clear ();
+			spawnedObjectsQ2.Clear ();
+			spawnedObjectsQ3.Clear ();
+			spawnedObjectsQ4.Clear ();
 
 			for (int i = 0; i < 3; i++) {
 				bool successful = spawnInAngleRange (-45, 45, spawnedObjectsQ1);
@@ -58,7 +75,7 @@ public class randomSpawningScript : MonoBehaviour {
 					i -= 1;
 				}
 			}
-
+//
 
 
 		}
@@ -66,7 +83,7 @@ public class randomSpawningScript : MonoBehaviour {
 
 	bool spawnInAngleRange(float min, float max, List<GameObject> objectList) {
 		// dangerous. if you fuck with the 9 down here you run the risk of crashing unity
-		if (objectList.Count >= 9) {
+		if (objectList.Count >= 3) {
 			return true;
 		}
 
@@ -75,6 +92,8 @@ public class randomSpawningScript : MonoBehaviour {
 		//				float angle = 45;
 
 		float angle = Random.Range (max, min);
+//		float angle = max;
+//		float angle = min;
 		//				Debug.Log (angle);
 		//				Vector3 anglePos = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
 
@@ -82,10 +101,10 @@ public class randomSpawningScript : MonoBehaviour {
 //		targetDir = targetDir.normalized;
 		//				Debug.Log (targetDir);
 		Quaternion rotate = Quaternion.Euler(0,0,angle);
-		Vector3 pivot = transform.position;
+		Vector3 pivot = transform.position;	
 		targetDir = rotate * (targetDir - pivot) + pivot;
-		Vector3 randomPos = targetDir * Random.Range(1, radius);
-//		Vector3 randomPos = targetDir * radius;
+		Vector3 randomPos = targetDir * Random.Range(2, radius);
+//		Vector3 randomPos = targetDir * 2;
 
 		//				Debug.Log (randomPos);
 
@@ -103,12 +122,13 @@ public class randomSpawningScript : MonoBehaviour {
 		}
 
 		if (deaded) {
-			return !deaded;
+			return false;
 		}
 
+		numSpawned += 1;
 		objectList.Add (enemy);
 
-		return !deaded;
+		return true;
 		
 	}
 }
