@@ -37,15 +37,19 @@ public class randomSpawningScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //		int numKilled = GameObject.Find
-//		time -= Time.deltaTime;
-//		if (time <= 0) {
-//			time = 10f;
+		time -= Time.deltaTime;
+		if (time <= 0) {
+			//you lose
+		}
 		Debug.Log(numKilled);
 		Debug.Log (numSpawned);
 		if (numKilled == numSpawned) {
 
 			numKilled = 0;
 			numSpawned = 0;
+
+			time = 10f;
+
 			spawnedObjectsQ1.Clear ();
 			spawnedObjectsQ2.Clear ();
 			spawnedObjectsQ3.Clear ();
