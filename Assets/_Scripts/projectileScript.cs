@@ -7,7 +7,8 @@ public class projectileScript : MonoBehaviour {
    GameObject clockHandPlayer;
     public GameObject targetParticle;
     public Vector3 shootDirection;
-    
+    public float initialV = 1f;
+        public float continueV = 10f;
 	// Use this for initialization
 	void Start () {
        
@@ -23,21 +24,26 @@ public class projectileScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {        
-        transform.position += projectileSpeed*Time.deltaTime*shootDirection;
+    void Update () {
+        // transform.position += projectileSpeed*Time.deltaTime*shootDirection;
+        Rigidbody2D bullet = gameObject.GetComponent<Rigidbody2D>();
+        bullet.AddForce(shootDirection * initialV, ForceMode2D.Impulse);
+        bullet.AddForce(shootDirection*continueV, ForceMode2D.Force);
+        
 
 	}
 
     void OnCollisionEnter2D(Collision2D enemy)
     {
+        clockHandPlayer.GetComponent<rotateControl>().canMove = true;
         GameObject targetClear = Instantiate(targetParticle) as GameObject;
         targetClear.transform.localPosition =transform.localPosition;
 
         targetClear.transform.localEulerAngles = new Vector3(-transform.localEulerAngles.z, 90, 0);
-       
+     gameObject.SetActive(false);
         if (enemy.gameObject.CompareTag("enemy"))
         {
-            
+           
             gameObject.SetActive(false);
             enemy.gameObject.SetActive(false);
         }
