@@ -16,7 +16,7 @@ public class randomSpawningScript : MonoBehaviour {
 	public int numSpawned;
 	public int numKilled;
 
-	public int NUM_TO_SPAWN_perQ = 2;
+	public int NUM_TO_SPAWN_perQ = 1;
 
 //	int numKilled;
 	// Use this for initialization
@@ -44,6 +44,8 @@ public class randomSpawningScript : MonoBehaviour {
 		Debug.Log(numKilled);
 		Debug.Log (numSpawned);
 		if (numKilled == numSpawned) {
+			
+			NUM_TO_SPAWN_perQ += 1;
 
 			numKilled = 0;
 			numSpawned = 0;
