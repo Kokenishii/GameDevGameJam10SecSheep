@@ -15,6 +15,9 @@ public class randomSpawningScript : MonoBehaviour {
 	float time = 10f;
 	public int numSpawned;
 	public int numKilled;
+
+	public int NUM_TO_SPAWN_perQ = 2;
+
 //	int numKilled;
 	// Use this for initialization
 	void Start () {
@@ -48,42 +51,39 @@ public class randomSpawningScript : MonoBehaviour {
 			spawnedObjectsQ3.Clear ();
 			spawnedObjectsQ4.Clear ();
 
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < NUM_TO_SPAWN_perQ; i++) {
 				bool successful = spawnInAngleRange (-45, 45, spawnedObjectsQ1);
 				if (!successful) {
 					i -= 1;
 				}
 			}
 
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < NUM_TO_SPAWN_perQ; i++) {
 				bool successful = spawnInAngleRange (45, 135, spawnedObjectsQ2);
 				if (!successful) {
 					i -= 1;
 				}
 			}
 
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < NUM_TO_SPAWN_perQ; i++) {
 				bool successful = spawnInAngleRange (135, 225, spawnedObjectsQ3);
 				if (!successful) {
 					i -= 1;
 				}
 			}
 
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < NUM_TO_SPAWN_perQ; i++) {
 				bool successful = spawnInAngleRange (225, 315, spawnedObjectsQ4);
 				if (!successful) {
 					i -= 1;
 				}
 			}
-//
-
-
 		}
 	}
 
 	bool spawnInAngleRange(float min, float max, List<GameObject> objectList) {
 		// dangerous. if you fuck with the 9 down here you run the risk of crashing unity
-		if (objectList.Count >= 3) {
+		if (objectList.Count >= NUM_TO_SPAWN_perQ) {
 			return true;
 		}
 
