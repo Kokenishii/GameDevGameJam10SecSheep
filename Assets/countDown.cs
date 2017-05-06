@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class countDown : MonoBehaviour {
-    float time=10;
+    public float time=10;
     public Text countdownText;
     int timeText;
 	// Use this for initialization
@@ -20,7 +20,7 @@ public class countDown : MonoBehaviour {
         countdownText.text = timeText.ToString();
         if (time<=0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         Debug.Log(time);
     }
