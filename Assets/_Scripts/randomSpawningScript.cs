@@ -102,7 +102,7 @@ public class randomSpawningScript : MonoBehaviour {
 		bool deaded = false;
 		//				float angle = 45;
 
-		float angle = Random.Range (max, min);
+		float angle = Random.Range (max - 1, min);
 //		float angle = max;
 //		float angle = min;
 		//				Debug.Log (angle);
