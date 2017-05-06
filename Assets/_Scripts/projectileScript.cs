@@ -21,7 +21,7 @@ public class projectileScript : MonoBehaviour {
       
 
         transform.localEulerAngles = new Vector3(0,0,clockHandPlayer.transform.localEulerAngles.z);
-
+        
       
     }
 
