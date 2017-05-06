@@ -16,11 +16,15 @@ public class randomSpawningScript : MonoBehaviour {
 	public int numSpawned;
 	public int numKilled;
 
-	public int NUM_TO_SPAWN_perQ = 1;
+	public int NUM_TO_SPAWN_perQ = 0;
+
+	GameObject countDown;
 
 //	int numKilled;
 	// Use this for initialization
 	void Start () {
+		countDown = GameObject.Find ("timerGameOver");
+
 		numKilled = 0;
 		numSpawned = 0;
 		spawnedObjectsQ1 = new List<GameObject>();
@@ -37,14 +41,15 @@ public class randomSpawningScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //		int numKilled = GameObject.Find
-		time -= Time.deltaTime;
-		if (time <= 0) {
-			//you lose
-		}
+//		time -= Time.deltaTime;
+//		if (time <= 0) {
+//			//you lose
+//		}
+
 		Debug.Log(numKilled);
 		Debug.Log (numSpawned);
 		if (numKilled == numSpawned) {
-			
+			countDown.GetComponent<countDown> ().time = 10f;
 			NUM_TO_SPAWN_perQ += 1;
 
 			numKilled = 0;

@@ -20,6 +20,7 @@ public class countDown : MonoBehaviour {
         countdownText.text = timeText.ToString();
         if (time<=0)
         {
+			Debug.Log ("YOU SUCK");
             SceneManager.LoadScene(1);
         }
         Debug.Log(time);
