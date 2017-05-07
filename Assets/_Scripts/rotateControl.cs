@@ -26,7 +26,8 @@ public class rotateControl : MonoBehaviour {
         //transform.Rotate(new Vector3(0,0,leftRight*moveConstant));
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            handClicked.gameObject.SetActive(true);
+			Debug.Log ("ayys");
+//            handClicked.gameObject.SetActive(true);
             StartCoroutine(shootHighlight());
             if (canShoot)
             {
@@ -60,6 +61,6 @@ public class rotateControl : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.1f);
 
-        handClicked.gameObject.SetActive(false);
+//        handClicked.gameObject.SetActive(false);
     }
 }
