@@ -7,6 +7,7 @@ public class rotateControl : MonoBehaviour {
     public float moveConstant=1;
     public GameObject projectilePrefab;
     public bool canMove = true;
+    public bool canShoot = true;
     // Use this for initialization
     void Start () {
 		
@@ -23,8 +24,10 @@ public class rotateControl : MonoBehaviour {
         //transform.Rotate(new Vector3(0,0,leftRight*moveConstant));
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            
-            GameObject projectileCreated = Instantiate(projectilePrefab) as GameObject;
+            if (canShoot)
+            {
+                GameObject projectileCreated = Instantiate(projectilePrefab) as GameObject;
+            }
             canMove = false;
            // StartCoroutine(move());
         }

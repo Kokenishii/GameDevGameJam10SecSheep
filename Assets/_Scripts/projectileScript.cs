@@ -32,13 +32,18 @@ public class projectileScript : MonoBehaviour {
         Rigidbody2D bullet = gameObject.GetComponent<Rigidbody2D>();
         bullet.AddForce(shootDirection * initialV, ForceMode2D.Impulse);
         bullet.AddForce(shootDirection*continueV, ForceMode2D.Force);
+        //Test Here!!!!!!!!!!!!!!!
         clockHandPlayer.GetComponent<rotateControl>().canMove = false;
-
+        clockHandPlayer.GetComponent<rotateControl>().canShoot = false;
+        //Test Here!!!!!!!!!!!!!!!
     }
 
     void OnCollisionEnter2D(Collision2D enemy)
     {
+        //Test Here!!!!!!!!!!!!!!! //Test Here!!!!!!!!!!!!!!! //Test Here!!!!!!!!!!!!!!!
         clockHandPlayer.GetComponent<rotateControl>().canMove = true;
+        clockHandPlayer.GetComponent<rotateControl>().canShoot = true;
+        //Test Here!!!!!!!!!!!!!!! //Test Here!!!!!!!!!!!!!!! //Test Here!!!!!!!!!!!!!!!
         GameObject targetClear = Instantiate(targetParticle) as GameObject;
         targetClear.transform.localPosition =transform.localPosition;
 
