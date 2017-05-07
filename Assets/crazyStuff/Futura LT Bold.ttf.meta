@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 76a7e29590f6c1f49bf1e6e64e3f53be
+timeCreated: 1494192806
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Futura LT Book
+  fontNames:
+  - Futura LT Book
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
