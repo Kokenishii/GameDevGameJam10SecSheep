@@ -9,6 +9,7 @@ public class rotateControl : MonoBehaviour {
     public GameObject handClicked;
     public bool canMove = true;
     public bool canShoot = true;
+    public GameObject vortexRef;
     // Use this for initialization
     void Start () {
 		
@@ -26,13 +27,17 @@ public class rotateControl : MonoBehaviour {
         //transform.Rotate(new Vector3(0,0,leftRight*moveConstant));
         if (Input.GetKeyDown(KeyCode.Space))
         {
-			Debug.Log ("ayys");
-//            handClicked.gameObject.SetActive(true);
+            vortexRef.SetActive(true);
+            //	Debug.Log ("ayys");
+            //            handClicked.gameObject.SetActive(true);
             StartCoroutine(shootHighlight());
             if (canShoot)
             {
+                
                 GameObject projectileCreated = Instantiate(projectilePrefab) as GameObject;
             }
+        
+
             canMove = false;
            // StartCoroutine(move());
         }
@@ -59,8 +64,9 @@ public class rotateControl : MonoBehaviour {
     }
     IEnumerator shootHighlight()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
+        vortexRef.SetActive(false);
 
-//        handClicked.gameObject.SetActive(false);
+        //        handClicked.gameObject.SetActive(false);
     }
 }
