@@ -16,6 +16,6 @@ public class startEnemyScript : MonoBehaviour {
 	}
     void OnCollisionEnter2D()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

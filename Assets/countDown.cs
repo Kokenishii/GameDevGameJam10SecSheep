@@ -21,7 +21,7 @@ public class countDown : MonoBehaviour {
         if (time<=0)
         {
 			Debug.Log ("YOU SUCK");
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
         Debug.Log(time);
     }

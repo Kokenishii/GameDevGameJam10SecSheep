@@ -23,7 +23,7 @@ namespace UnityStandardAssets.ImageEffects
                
                 if (counter < 160)
                 {
-                    center = new Vector2(center.x + 0.05f, center.y);
+                    center = new Vector2(center.x + 0.03f, center.y);
                     counter++;
                 }
                 else
