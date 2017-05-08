@@ -37,7 +37,7 @@ public class projectileScript : MonoBehaviour {
         bullet.AddForce(shootDirection*continueV, ForceMode2D.Force);
         //Test Here!!!!!!!!!!!!!!!
        // clockHandPlayer.GetComponent<rotateControl>().canMove = false;
-        clockHandPlayer.GetComponent<rotateControl>().canShoot = false;
+      //  clockHandPlayer.GetComponent<rotateControl>().canShoot = false;
         //Test Here!!!!!!!!!!!!!!!
     }
 
